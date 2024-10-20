@@ -1,0 +1,50 @@
+{
+  "AWSTemplateFormatVersion": "2010-09-09",
+  "Description": "PermissionsNestedStack nested stack",
+  "Parameters": {
+    "ApiGatewayRestApiParameter": {
+      "Type": "String"
+    },
+    "UserLambdaFunctionArnParameter": {
+      "Type": "String"
+    }
+  },
+  "Resources": {
+    "UserLambdaPermissionApiGateway": {
+      "Type": "AWS::Lambda::Permission",
+      "Properties": {
+        "FunctionName": {
+          "Ref": "UserLambdaFunctionArnParameter"
+        },
+        "Action": "lambda:InvokeFunction",
+        "Principal": "apigateway.amazonaws.com",
+        "SourceArn": {
+          "Fn::Join": [
+            "",
+            [
+              "arn:",
+              {
+                "Ref": "AWS::Partition"
+              },
+              ":execute-api:",
+              {
+                "Ref": "AWS::Region"
+              },
+              ":",
+              {
+                "Ref": "AWS::AccountId"
+              },
+              ":",
+              {
+                "Ref": "ApiGatewayRestApiParameter"
+              },
+              "/*/*"
+            ]
+          ]
+        }
+      },
+      "DependsOn": []
+    }
+  },
+  "Outputs": {}
+}

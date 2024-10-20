@@ -12,6 +12,8 @@ import {
   Box,
 } from "@mui/material";
 import { useForm } from "react-hook-form";
+import Toast from "./Toast";
+import SendSMS from "./SMS/SendSMS";
 
 export default function Main() {
   const [account, setAccount] = useState("");
@@ -49,7 +51,7 @@ export default function Main() {
   };
 
   return (
-    <div style={{ backgroundColor: '#FFAC54' }}>
+    <div>
       <Container
         component="main"
         maxWidth="xs"
@@ -58,10 +60,15 @@ export default function Main() {
           backgroundColor: "#F15A29",
           padding: "20px",
           borderRadius: "8px",
-          borderColor: 'gray'
+          borderColor: "gray",
         }}
       >
-        <Grid container alignItems="center" justifyContent={'center'} spacing={2}>
+        <Grid
+          container
+          alignItems="center"
+          justifyContent={"center"}
+          spacing={2}
+        >
           <Grid item xs={12}>
             <Typography component="h1" variant="h5" sx={{ color: "#fff" }}>
               Send Money
@@ -200,9 +207,8 @@ export default function Main() {
             fullWidth
             variant="contained"
             sx={{ mt: 3, mb: 2, backgroundColor: "#fff", color: "#F15A29" }}
-          >
-            Review Payment
-          </Button>
+            onClick={() => handleSubmit}
+          >Review Payment</Button>
         </Box>
       </Container>
     </div>

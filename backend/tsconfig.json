@@ -1,24 +1,14 @@
 {
-	"compilerOptions": {
-		"esModuleInterop": true,
-		"baseUrl": ".",
-		"removeComments": true,
-		"preserveConstEnums": true,
-		"strictNullChecks": true,
-		"sourceMap": true,
-		"allowJs": true,
-		"target": "ESNext",
-		"outDir": ".build",
-		"moduleResolution": "node",
-		// Ensure that Babel can safely transpile files in the TypeScript project
-		"isolatedModules": true,
-		"lib": ["es2020"],
-		"rootDir": "./",
-		"paths": {
-			"@functions/*": ["functions/*"],
-		},
-		"forceConsistentCasingInFileNames": true,
-		// "strict":true
-	},
-	"exclude": ["node_modules", "test/**"],
-}
+    "compilerOptions": {
+        "lib": ["ES2020"], 
+      "target": "ES2020",
+      "module": "commonjs",
+      "outDir": "./dist",
+      "strict": true,
+      "esModuleInterop": true,
+      "skipLibCheck": true
+    },
+    "include": ["src/**/*"],
+    "exclude": ["node_modules", "dist"]
+  }
+

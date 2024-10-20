@@ -1,11 +1,20 @@
 import { Request, Response } from 'express';
 import path from 'path';
 import { createAuthenticatedClient, Grant } from "@interledger/open-payments";
+import fs from 'fs'
 
 
 
 export const exampleController = async (req: Request, res: Response) => {
   const keyPath  = path.join(__dirname, '../../private.key');
+  let responses = {
+    walletAddress: {},
+    incomingPaymentGrant: {},
+    incomingPayment: {},
+    quoteGrant: {},
+    quote: {},
+    outgoingPaymentGrant: {}
+  }
 
 
   const client = await createAuthenticatedClient({
@@ -22,6 +31,8 @@ export const exampleController = async (req: Request, res: Response) => {
     url: "https://ilp.interledger-test.dev/a2ed2ca1",
   });
   // console.log(walletAddress);
+
+  responses.walletAddress = walletAddress
 
 
   // 2. Create grant for incoming payment
@@ -41,6 +52,8 @@ export const exampleController = async (req: Request, res: Response) => {
     }
   ) as Grant;
 
+  responses.incomingPaymentGrant = incoming_payment_grant
+
   //3. Create incoming payment
 
   const incomingPayment = await client.incomingPayment.create(
@@ -58,6 +71,8 @@ export const exampleController = async (req: Request, res: Response) => {
       expiresAt: new Date(Date.now() + 60_000 * 10).toISOString(),
     },
   );
+
+  responses.incomingPayment = incomingPayment
 
   // console.log(incomingPayment);
 
@@ -78,6 +93,8 @@ export const exampleController = async (req: Request, res: Response) => {
     },
   ) as Grant;
 
+  responses.quoteGrant = quote_grant
+
   // console.log(quote_grant);
 
   // 5. Create quote
@@ -93,7 +110,7 @@ export const exampleController = async (req: Request, res: Response) => {
     },
   );
 
-  console.log(quote);
+  responses.quote = quote
 
 
   //6. Create grant for outgoing payment
@@ -126,6 +143,16 @@ export const exampleController = async (req: Request, res: Response) => {
     },
   ) as any;
 
+  responses.outgoingPaymentGrant = outgoing_payment_grant
+
+  fs.writeFile('data.json', JSON.stringify(responses, null, 2), (err) => {
+    if (err) {
+      console.error('Error writing to file', err);
+    } else {
+      console.log('File has been written');
+    }
+  })
+
 
   res.redirect(outgoing_payment_grant.interact.redirect);
 
@@ -151,5 +178,5 @@ export const exampleController = async (req: Request, res: Response) => {
 
   
 
-  res.json({ message: 'Hello from the example route!' });
+  // res.json({ message: 'Hello from the example route!' });
 };

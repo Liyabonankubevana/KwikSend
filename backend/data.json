@@ -1,0 +1,114 @@
+{
+  "walletAddress": {
+    "id": "https://ilp.interledger-test.dev/a2ed2ca1",
+    "publicName": "6911693e",
+    "assetCode": "EUR",
+    "assetScale": 2,
+    "authServer": "https://auth.interledger-test.dev",
+    "resourceServer": "https://ilp.interledger-test.dev"
+  },
+  "incomingPaymentGrant": {
+    "access_token": {
+      "access": [
+        {
+          "actions": [
+            "list",
+            "read",
+            "read-all",
+            "complete",
+            "create"
+          ],
+          "type": "incoming-payment"
+        }
+      ],
+      "value": "EF5920BB110CCA8B9680",
+      "manage": "https://auth.interledger-test.dev/token/364527a3-a09e-4333-8741-7abc7539c668",
+      "expires_in": 600
+    },
+    "continue": {
+      "access_token": {
+        "value": "43E5A5E22A96F9270AAA"
+      },
+      "uri": "https://auth.interledger-test.dev/continue/955ea8be-cdea-4d28-a7d2-b1de05e031a9"
+    }
+  },
+  "incomingPayment": {
+    "id": "https://ilp.interledger-test.dev/incoming-payments/69e37684-4b2d-4af0-bef7-9b2089a0a9e4",
+    "walletAddress": "https://ilp.interledger-test.dev/a2ed2ca1",
+    "incomingAmount": {
+      "value": "100",
+      "assetCode": "EUR",
+      "assetScale": 2
+    },
+    "receivedAmount": {
+      "value": "0",
+      "assetCode": "EUR",
+      "assetScale": 2
+    },
+    "completed": false,
+    "createdAt": "2024-10-20T06:44:08.251Z",
+    "updatedAt": "2024-10-20T06:44:08.251Z",
+    "expiresAt": "2024-10-20T06:54:08.089Z",
+    "methods": [
+      {
+        "type": "ilp",
+        "ilpAddress": "test.net.A0aOOzRjuZVdIad_Yn-9KgfyUqSfrSfSDI3_A1iTj7KMP2joy1sc59nFZdxABHOJuDmxuuVjINsR3YX1wHqfxSSwvhUWgW8",
+        "sharedSecret": "oDPQfMidpQxk_utLl-CkYfPd9HqKTejhCeWuIPEoW9I"
+      }
+    ]
+  },
+  "quoteGrant": {
+    "access_token": {
+      "access": [
+        {
+          "actions": [
+            "create",
+            "read",
+            "read-all"
+          ],
+          "type": "quote"
+        }
+      ],
+      "value": "5D6E0280B7E2A842651A",
+      "manage": "https://auth.interledger-test.dev/token/ba5aa3d6-1f68-400c-9246-d4b7d124e6d5",
+      "expires_in": 600
+    },
+    "continue": {
+      "access_token": {
+        "value": "FAE55E47BEDA5C959655"
+      },
+      "uri": "https://auth.interledger-test.dev/continue/0d4cd8be-da4d-4af0-9acd-7589275aab50"
+    }
+  },
+  "quote": {
+    "id": "https://ilp.interledger-test.dev/quotes/6fda149b-b14d-4228-967d-6786638f388d",
+    "walletAddress": "https://ilp.interledger-test.dev/a2ed2ca1",
+    "receiveAmount": {
+      "value": "100",
+      "assetCode": "EUR",
+      "assetScale": 2
+    },
+    "debitAmount": {
+      "value": "102",
+      "assetCode": "EUR",
+      "assetScale": 2
+    },
+    "receiver": "https://ilp.interledger-test.dev/incoming-payments/69e37684-4b2d-4af0-bef7-9b2089a0a9e4",
+    "expiresAt": "2024-10-20T06:49:09.154Z",
+    "createdAt": "2024-10-20T06:44:09.154Z",
+    "method": "ilp"
+  },
+  "outgoingPaymentGrant": {
+    "interact": {
+      "redirect": "https://auth.interledger-test.dev/interact/5c8a1480-4b24-4fb4-9a75-ccdd75e23687/AA5FCDEEE3E154E4?clientName=test&clientUri=https%3A%2F%2Filp.interledger-test.dev%2Fkwiksend",
+      "finish": "AA5FCDEEE3E154E4"
+    },
+    "continue": {
+      "access_token": {
+        "value": "5945658B4664538A92A1"
+      },
+      "uri": "https://auth.interledger-test.dev/continue/59fe9e7e-dc65-440e-a038-e311971d535d",
+      "wait": 1
+    }
+  }
+}

@@ -1,5 +1,6 @@
 import express from 'express';
 import routes from './routes';
+import cors from 'cors';
 
 import fetch, { Headers, Request, Response } from 'node-fetch';
 
@@ -15,6 +16,9 @@ const app = express();
 
 // Middleware to parse incoming JSON requests
 app.use(express.json());
+
+app.use(cors());
+
 
 // Register API routes
 app.use('/api', routes);

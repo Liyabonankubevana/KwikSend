@@ -14,7 +14,7 @@ export const Redirect: React.FC = ()=> {
         if (interact) {
             console.log(interact)
         }
-        axios.post('http://localhost:3000/api/quoats/accepted', {
+        axios.post('http://localhost:3000/api/quote/accepted', {
             hash: authCode,
             interact_ref: interact
         })

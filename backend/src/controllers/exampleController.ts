@@ -119,7 +119,7 @@ export const exampleController = async (req: Request, res: Response) => {
         start: ["redirect"],
         finish: {
           method: "redirect",
-          uri: "http://localhost:3344",
+          uri: "http://localhost:3001/redirect",
           nonce: "1234567890",
         },
       },
